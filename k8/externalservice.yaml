@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-logging
+  namespace: kube-system
+  labels:
+    k8s-app: elasticsearch
+    kubernetes.io/name: "elasticsearch"
+spec:
+  type: ExternalName
+  externalName: niveus-logging-monitoring.asia-south1-b.c.tech-rnd-project.internal
+  ports:
+    - port: 9200
+      targetPort: 9200

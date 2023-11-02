@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springlogmonitor
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: springlogmonitor
+  template:
+    metadata:
+      labels:
+        app: springlogmonitor
+    spec:
+      containers:
+      - image: asia-south1-docker.pkg.dev/tech-rnd-project/niveus/springlogmonitor:1.0.0
+        name: springlogmonitor
+        ports:
+        - containerPort: 8080
